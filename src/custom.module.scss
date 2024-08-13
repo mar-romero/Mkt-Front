@@ -1,0 +1,183 @@
+// Import Bootstrap's source files
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+// Variables overrides
+$theme-colors: (
+  'primary': #6f42c1,
+  // color principal
+  'secondary': #6610f2,
+  'success': #198754,
+  'info': #0dcaf0,
+  'warning': #ffc107,
+  'danger': #dc3545,
+  'light': #f8f9fa,
+  'dark': #212529
+);
+
+// Custom navbar styles
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to bottom, #7c54f7, #1d3661);
+  color: white;
+}
+
+.centralDiv {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .registrationForm {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.384), rgba(0, 0, 0, 0));
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
+
+    .formControl {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #af9cff;
+      border: none;
+      border-radius: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #7c54f7;
+      color: #bfb0cf;
+      border: none;
+      border-radius: 1rem;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: #7d54f798;
+      }
+    }
+
+    .btnSecondary {
+      border: none;
+    }
+  }
+}
+.centralDivLogin {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 91vh;
+
+  .registrationForm {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    margin-bottom: 250px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.384), rgba(0, 0, 0, 0));
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
+
+    .formControl {
+      width: 100%;
+      padding: 10px;
+      flex: 1;
+      margin-bottom: 20px;
+      background-color: #af9cff;
+      border: none;
+      border-radius: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #7c54f7;
+      color: #bfb0cf;
+      border: none;
+      border-radius: 1rem;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: #7d54f798;
+      }
+    }
+
+    .showHideButton {
+      margin-left: 10px;
+      height: 100%;
+      border: none;
+      background-color: #7c54f7;
+      color: #bfb0cf;
+      border-radius: 0.5rem;
+      padding: 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #7d54f798;
+      }
+      .btnSecondary {
+        border: none;
+      }
+    }
+  }
+}
+.showHideButton {
+  margin-left: 10px;
+  height: 100%;
+  border: none;
+  background-color: #e8e5f1;
+  color: #523472;
+  border-radius: 0.5rem;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #525153a6;
+  }
+}
+    .btnHome {
+      display: block;
+      width: 60%;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #7c54f7;
+      color: #bfb0cf;
+      border: none;
+      border-radius: 1rem;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: #7d54f798;
+      }
+    }
+    .btnHomeCerti{
+      width: 30%!important;
+      margin-left: 35%!important;
+      margin-top: 2%!important;
+      margin-bottom: 2%!important;
+    }
+
+    .footer{
+      background-color: transparent;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    
+
+    }

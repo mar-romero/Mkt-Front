@@ -1,0 +1,234 @@
+.cursoDetalle {
+  display: flex;
+  height: 100vh;
+  background-color: white;
+  color: #333;
+  position: relative;
+
+  .sidebar {
+    background-color: #f0f0f0;
+    padding: 20px;
+    overflow-y: hidden; // Cambiado a hidden
+    position: relative;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    width: 250px; // Ancho inicial de la barra lateral
+
+    &.closed {
+      width: 0;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+
+    .capitulosContainer {
+      overflow-y: auto;
+      flex-grow: 1;
+      ul {
+        list-style-type: none;
+        padding: 0;
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &:hover,
+          &.active {
+            background-color: #e0e0e0;
+          }
+          .moduloTitulo {
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 10px;
+          }
+
+          .moduloProgreso {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            font-size: 0.8rem;
+            color: #7c54f7;
+          }
+        }
+      }
+    }
+
+    .resizeHandle {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      cursor: ew-resize;
+      background-color: #ddd;
+
+      &:hover {
+        background-color: #7c54f7;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  .toggleSidebar {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: #7c54f7;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: left 0.3s ease;
+
+    &:hover {
+      background-color: darken(#7c54f7, 10%);
+    }
+  }
+
+  .contenido {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 40px;
+
+    .contenidoCentrado {
+      max-width: 800px; // Ajusta este valor según tus preferencias
+      width: 100%;
+      background-color: white;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    * {
+      max-width: 100%;
+    }
+    .modulo {
+      display: none;
+
+      &.visible {
+        display: block;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #7c54f7;
+      }
+      p,
+      li {
+        word-break: break-word; // Añade esto para romper palabras muy largas
+      }
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #7c54f7;
+      }
+
+      ul {
+        padding-left: 20px;
+
+        li {
+          margin-bottom: 10px;
+        }
+      }
+      .moduloContenido {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+
+        h2 {
+          color: #6c5ce7;
+          font-size: 24px;
+          margin-bottom: 15px;
+        }
+
+        p {
+          color: #333;
+          font-size: 16px;
+          line-height: 1.6;
+          margin-bottom: 20px;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+
+        h3 {
+          color: #6c5ce7;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        ul {
+          list-style-type: disc;
+          padding-left: 20px;
+
+          li {
+            margin-bottom: 8px;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+
+  .siguienteModulo {
+    background: none;
+    border: 2px solid #6c5ce7;
+    font-size: 24px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transform: translateX(-50%);
+    width: 30%; /* La mitad del ancho actual */
+    height: 55px;
+    color: white;
+    background-color: #6c5ce7;
+    border-radius: 25px; /* Agrega un borde redondeado */
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centra el elemento horizontalmente */
+    display: block;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+}

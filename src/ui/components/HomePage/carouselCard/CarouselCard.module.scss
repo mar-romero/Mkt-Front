@@ -1,0 +1,49 @@
+.CarouselCard {
+  background-color: transparent;
+  width: 100vw;
+  .carousel {
+    margin-top: 20px;
+    background: transparent;
+  }
+  .carouselIn {
+    background-color: transparent;
+    border: none;
+    width: 20vw;
+    margin-left: 200px;
+  }
+  // Estilos para las tarjetas dentro del carrusel
+  .carouselItem {
+    width: 20vw;
+    text-align: center;
+    background-color: #f8f8f8;
+    color: #ffffff;
+    margin-top: 50px;
+    border: none;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    height: 250px;
+  }
+.carouselTextIn {
+    background-color: #5531c2;
+    color: #ffffff;
+    border: none;
+    height: 250px;
+    width: 20vw;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+
+    /* Centrando el contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Estilizando el texto */
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2em;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+}
