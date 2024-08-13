@@ -10,7 +10,7 @@ const Login: React.FC = () => {
     event.preventDefault();
     localStorage.setItem('isLoggedIn', 'true');
 
-    window.location.href = `http://localhost:3000/cursos`;
+    window.location.href = `https://mkt-front-mauve.vercel.app/cursos`;
   };
 
   return (
