@@ -1,0 +1,111 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Modelo de agencia: estrategias clave para construir y escalar tu negocio",
+      "instructor": "Claudio Cavezzali",
+      "classesCount": 14,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso"
+    },
+    {
+      "id": 2,
+      "title": "Inteligencia Artificial",
+      "instructor": "Victoria Sangiovani Sandoval",
+      "classesCount": 20,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso2"
+    },
+    {
+      "id": 3,
+      "title": "Inteligencia Artificial",
+      "instructor": "Victoria Sangiovani Sandoval",
+      "classesCount": 20,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso2"
+    },
+    {
+      "id": 4,
+      "title": "Inteligencia Artificial",
+      "instructor": "Victoria Sangiovani Sandoval",
+      "classesCount": 20,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso2"
+    },
+    {
+      "id": 5,
+      "title": "Inteligencia Artificial",
+      "instructor": "Victoria Sangiovani Sandoval",
+      "classesCount": 20,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso2"
+    
+    },
+    {
+      "id": 6,
+      "title": "Inteligencia Artificial",
+      "instructor": "Victoria Sangiovani Sandoval",
+      "classesCount": 20,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso2"
+    },
+    {
+      "id": 7,
+      "title": "Inteligencia Artificial",
+      "instructor": "Victoria Sangiovani Sandoval",
+      "classesCount": 20,
+      "imageUrl": "https://via.placeholder.com/150",
+      "courseUrl": "/curso2"
+    }
+  ],
+  "Digital": [
+    {
+      "id": 1,
+      "title": "Marketing Digital",
+      "instructor": "Claudio Cavezzali",
+      "classesCount": 14,
+      "imageUrl": "https://via.placeholder.com/150"
+    }
+  ],
+  "categories": [
+    { "id": 1, "name": "Marketing" },
+    { "id": 2, "name": "Inteligencia Artificial" }
+  ],
+  "usuario": [
+    { "id": 1, "name": "Marketing" },
+    { "id": 2, "name": "Inteligencia Artificial" }
+  ],
+  "coursesTop": [
+    {
+      "id": 1,
+      "title": "https://via.placeholder.com/150",
+      "content": "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel nunc at elit ultricies pharetra. Nullam nec felis sed metus facilisis dictum. Nullam nec felis sed metus facilisis dictum."
+    },
+    {
+      "id": 2,
+      "title": "Marketing Digital",
+      "content": "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel nunc at elit ultricies pharetra. Nullam nec felis sed metus facilisis dictum. Nullam nec felis sed metus facilisis dictum."
+    },
+    {
+      "id": 3,
+      "title": "Marketing Digital",
+      "content": "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel nunc at elit ultricies pharetra. Nullam nec felis sed metus facilisis dictum. Nullam nec felis sed metus facilisis dictum."
+    },
+    {
+      "id": 4,
+      "title": "Marketing Digital",
+      "content": "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel nunc at elit ultricies pharetra. Nullam nec felis sed metus facilisis dictum. Nullam nec felis sed metus facilisis dictum."
+    },
+    {
+      "id": 6,
+      "title": "Marketing Digital",
+      "content": "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel nunc at elit ultricies pharetra. Nullam nec felis sed metus facilisis dictum. Nullam nec felis sed metus facilisis dictum."
+    },
+    {
+      "id": 6,
+      "title": "Marketing Digital",
+      "content": "Inteligencia Artificial1\n Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel nunc at elit ultricies pharetra. Nullam nec felis sed metus facilisis dictum. Nullam nec felis sed metus facilisis dictum."
+    }
+  ]
+
+}
