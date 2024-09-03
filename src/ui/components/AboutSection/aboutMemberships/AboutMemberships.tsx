@@ -19,9 +19,8 @@ const AboutMemberships: React.FC = () => {
             <img src={Rectangle54} alt="Rectangle 54" className={styles.imagePlaceholder} />
             <div className={styles.text}>
               <p>
-                <strong>María Victoria</strong>
+                <strong>María Victoria Sangiovani Sandoval</strong>
               </p>
-              <p>Sangiovani Sandoval</p>
               <p>Lic. en Administración y Gestión Empresarial - UNSAM</p>
               <p>Posgrado en Marketing Estratégico - UNSAM</p>
               <p>Posgrado en Gestión de Proyectos - UTN</p>
@@ -33,10 +32,11 @@ const AboutMemberships: React.FC = () => {
           <div className={styles.profile}>
             <img src={Rectangle55} alt="Rectangle 55" className={styles.imagePlaceholder} />
             <div className={styles.text}>
-              <p>Claudio Franco</p>
               <p>
-                <strong>Cavezzali</strong>
+                {' '}
+                <strong>Claudio Franco Cavezzali</strong>
               </p>
+
               <p>Lic. en Comercialización y Marketing - Universidad Siglo XXI</p>
               <p>Posgrado en Marketing Estratégico - UNSAM</p>
               <p>Posgrado en Marketing B2B - UNSAM</p>

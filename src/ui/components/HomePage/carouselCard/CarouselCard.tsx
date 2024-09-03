@@ -6,16 +6,13 @@ import { Link } from 'react-router-dom';
 import Rectangle55 from '../../../../public/images/Rectangle2.jpg';
 
 interface CarouselCardProps {
-  cards: { title: string; content: string }[]; // Array de tarjetas
+  cards: { title: string; content: string }[];
 }
 
-
 const CarouselCard: React.FC<CarouselCardProps> = ({ cards }) => {
-  // Función para dividir un array en grupos
   const chunk = (arr: any[], size: number) =>
     Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
-  // Divide las tarjetas en grupos de tres
   const cardGroups = chunk(cards, 3);
 
   return (
@@ -23,14 +20,17 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ cards }) => {
       <div className={styles.carousel}>
         <Carousel interval={null}>
           {cardGroups.map((group, groupIndex) => (
-            <Carousel.Item key={groupIndex}>
+            <Carousel.Item className={styles.item} key={groupIndex}>
               <div className="row">
                 {group.map((card, cardIndex) => (
                   <div className="col-md-3 mb-3" key={cardIndex}>
                     <Card className={styles.carouselIn}>
                       <Card.Body>
                         <Card.Img src={Rectangle55} className={styles.carouselItem} />
-                        <Card.Text className={styles.carouselTextIn}>{card.content}</Card.Text>
+                        <div className={styles.carouselTextIn}>
+                          <Card.Title className={styles.cardTitle}>{card.title}</Card.Title>
+                          <Card.Text>{card.content}</Card.Text>
+                        </div>
                       </Card.Body>
                     </Card>
                   </div>

@@ -1,4 +1,3 @@
-// SocialIcon.tsx
 import React from 'react';
 import styles from './SocialIcon.module.scss';
 
@@ -10,7 +9,7 @@ interface SocialIconProps {
 
 const SocialIcon: React.FC<SocialIconProps> = ({ url, imageSrc, altText }) => {
   return (
-    <a href={url}>
+    <a href={url} className={styles.socialIcon}>
       <img src={imageSrc} alt={altText} />
     </a>
   );

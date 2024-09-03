@@ -1,37 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CursoDetalle from '../components/CursoDetalle/CursoDetalle';
 
+interface Modulo {
+  id: number;
+  titulo: string;
+  contenido: string;
+  conclusion: string;
+}
+
+interface CursoData {
+  titulo: string;
+  descripcion: string;
+  modulos: Modulo[];
+}
+
 const PaginaCurso: React.FC = () => {
-  // Simulación de datos obtenidos de una API
-  const cursoData = {
-    titulo: 'Curso sobre el Modelo de Agencia',
+  const [cursoData, setCursoData] = useState<CursoData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const cursoData2 = {
+    titulo: 'Curso de Modelo de Agencia',
+    descripcion:
+      'Este curso te enseñará todo sobre el modelo de agencia y cómo implementarlo en tu negocio de manera efectiva.',
     modulos: [
       {
         id: 1,
         titulo: 'Introducción al Modelo de Agencia',
         contenido: `
-        • El modelo de agencia es una estrategia empresarial clave para construir y escalar negocios. En este curso, exploraremos los conceptos fundamentales y las mejores prácticas relacionadas con este modelo, así como las estrategias que pueden ayudarte a alcanzar el éxito en tu agencia.
+        El modelo de agencia es una estrategia empresarial clave para construir y escalar negocios. En este curso, exploraremos los conceptos fundamentales y las mejores prácticas relacionadas con este modelo, así como las estrategias que pueden ayudarte a alcanzar el éxito en tu agencia.
 
-        • A lo largo del curso, profundizaremos en cómo el modelo de agencia puede ser aplicado en diferentes sectores y disciplinas, como el marketing, la publicidad, el diseño gráfico, el desarrollo web, entre otros. También analizaremos los roles y responsabilidades típicos dentro de una agencia, y destacaremos las habilidades y competencias necesarias para liderar y gestionar una agencia exitosa.
+        A lo largo del curso, profundizaremos en cómo el modelo de agencia puede ser aplicado en diferentes sectores y disciplinas, como el marketing, la publicidad, el diseño gráfico, el desarrollo web, entre otros. También analizaremos los roles y responsabilidades típicos dentro de una agencia, y destacaremos las habilidades y competencias necesarias para liderar y gestionar una agencia exitosa.
 
-        • Además, exploraremos las estrategias clave para construir una sólida base de clientes, incluyendo la creación de una propuesta de valor única, la identificación y segmentación del mercado objetivo, y la construcción de relaciones sólidas con los clientes.
+        Además, exploraremos las estrategias clave para construir una sólida base de clientes, incluyendo la creación de una propuesta de valor única, la identificación y segmentación del mercado objetivo, y la construcción de relaciones sólidas con los clientes.
 
-        • También te mostraremos cómo establecer una estructura de precios rentable y cómo gestionar eficazmente los recursos y el talento humano en tu agencia. En el mundo digital actual, las agencias se enfrentan a desafíos y oportunidades únicas.
+        También te mostraremos cómo establecer una estructura de precios rentable y cómo gestionar eficazmente los recursos y el talento humano en tu agencia. En el mundo digital actual, las agencias se enfrentan a desafíos y oportunidades únicas.
 
-        • Discutiremos las mejores prácticas para adaptarse a los cambios tecnológicos y las demandas del mercado, incluyendo la adopción de nuevas herramientas y tecnologías, la maximización de la eficiencia operativa y la gestión del crecimiento a largo plazo.
+        Discutiremos las mejores prácticas para adaptarse a los cambios tecnológicos y las demandas del mercado, incluyendo la adopción de nuevas herramientas y tecnologías, la maximización de la eficiencia operativa y la gestión del crecimiento a largo plazo.
 
-        • A lo largo de este curso, podrás aprender de ejemplos reales de éxito en el mundo de las agencias, así como de casos de estudio que ilustrarán los desafíos y las soluciones en el mundo real. También tendrás oportunidades prácticas para aplicar los conceptos y las estrategias aprendidas en ejercicios y actividades.
+        A lo largo de este curso, podrás aprender de ejemplos reales de éxito en el mundo de las agencias, así como de casos de estudio que ilustrarán los desafíos y las soluciones en el mundo real. También tendrás oportunidades prácticas para aplicar los conceptos y las estrategias aprendidas en ejercicios y actividades.
 
-        • Al finalizar este curso, estarás equipado con los conocimientos y las habilidades necesarias para construir y escalar tu propio negocio utilizando el modelo de agencia. Estarás preparado para enfrentar los desafíos del mercado y aprovechar las oportunidades para el crecimiento y el éxito de tu agencia.
-      `
+        Al finalizar este curso, estarás equipado con los conocimientos y las habilidades necesarias para construir y escalar tu propio negocio utilizando el modelo de agencia. Estarás preparado para enfrentar los desafíos del mercado y aprovechar las oportunidades para el crecimiento y el éxito de tu agencia.
+      `,
+        conclusion:
+          'En este módulo introductorio, has adquirido una comprensión sólida de los fundamentos del modelo de agencia y su importancia en el mundo empresarial actual. Estos conocimientos te servirán como base para los módulos siguientes, donde profundizaremos en estrategias específicas y prácticas.'
       },
       {
         id: 2,
         titulo: 'Estrategias para la Construcción de un Modelo de Agencia Sólido',
         contenido: `
-        • En el mundo empresarial, la construcción de un modelo de agencia sólido es esencial para el éxito y el crecimiento sostenible de cualquier negocio. Un modelo de agencia bien definido y estructurado proporciona una base sólida para la gestión de las operaciones, la generación de ingresos y el logro de los objetivos empresariales a largo plazo.
+        En el mundo empresarial, la construcción de un modelo de agencia sólido es esencial para el éxito y el crecimiento sostenible de cualquier negocio. Un modelo de agencia bien definido y estructurado proporciona una base sólida para la gestión de las operaciones, la generación de ingresos y el logro de los objetivos empresariales a largo plazo.
 
-        • En este tema, exploraremos diversas estrategias clave que pueden ayudarte a construir y fortalecer tu modelo de agencia.
+        En este tema, exploraremos diversas estrategias clave que pueden ayudarte a construir y fortalecer tu modelo de agencia.
 
         • Identificar tu Propuesta de Valor Única:
         Una de las primeras estrategias para construir un modelo de agencia sólido es identificar tu Propuesta de Valor Única (PVU). La PVU es lo que diferencia tu agencia de la competencia y el valor añadido que aportas a tus clientes. Pregúntate qué necesidades específicas de los clientes puedes satisfacer mejor que nadie, qué problemas puedes resolver de manera única y qué beneficios puedes ofrecer. Al identificar tu PVU, podrás desarrollar una estrategia de posicionamiento y marketing efectiva para atraer a clientes ideales y diferenciarte en el mercado.
@@ -50,35 +70,38 @@ const PaginaCurso: React.FC = () => {
 
         • Establecer Alianzas Estratégicas:
         Por último, una estrategia efectiva para construir un modelo de agencia sólido es establecer alianzas estratégicas con otras empresas complementarias. Identifica socios potenciales que puedan agregar valor a tus servicios o ayudarte a ampliar tu base de clientes. Estas alianzas pueden ser de colaboración o de promoción mutua, permitiéndote llegar a nuevos mercados y generar nuevas oportunidades de negocio. Trabaja en conjunto con estos socios para maximizar los beneficios y generar sinergias que impulsen el crecimiento y la consolidación de tu modelo de agencia.
-      `
+      `,
+        conclusion:
+          'Este módulo te ha proporcionado estrategias clave para construir un modelo de agencia sólido. Has aprendido sobre la importancia de la propuesta de valor única, el establecimiento de metas claras, la construcción de un equipo competente, y la implementación de procesos efectivos. Aplicar estos conocimientos te ayudará a sentar las bases para una agencia exitosa y sostenible.'
       },
       {
         id: 3,
         titulo: 'Estrategias para Escalar un Negocio de Agencia',
         contenido: `
+        A medida que tu agencia crece, es vital contar con estrategias efectivas para escalar el negocio exitosamente. Escalar un negocio de agencia implica ampliar su alcance, aumentar el número de clientes, mejorar la eficiencia operativa y lograr un crecimiento sostenible a largo plazo.
 
-  A medida que tu agencia crece, es vital contar con estrategias efectivas para escalar el negocio exitosamente. Escalar un negocio de agencia implica ampliar su alcance, aumentar el número de clientes, mejorar la eficiencia operativa y lograr un crecimiento sostenible a largo plazo.
-  
-  En esta sección, exploraremos diferentes estrategias clave que te ayudarán a escalar tu negocio de agencia.
+        En esta sección, exploraremos diferentes estrategias clave que te ayudarán a escalar tu negocio de agencia.
 
-• Especialización en un Nicho:
-Uno de los primeros pasos para escalar un negocio de agencia es enfocarse en la especialización en un nicho específico. En lugar de tratar de atender a todos los clientes posibles, elige un área de especialización donde tu agencia pueda destacar y ofrecer un valor único. Al especializarte, podrás desarrollar conocimientos especializados, crear una reputación sólida y atraer a clientes que buscan servicios específicos en ese nic
+        • Especialización en un Nicho:
+        Uno de los primeros pasos para escalar un negocio de agencia es enfocarse en la especialización en un nicho específico. En lugar de tratar de atender a todos los clientes posibles, elige un área de especialización donde tu agencia pueda destacar y ofrecer un valor único. Al especializarte, podrás desarrollar conocimientos especializados, crear una reputación sólida y atraer a clientes que buscan servicios específicos en ese nic
 
-• Construir y Mantener una Marca Sólida:
-Una estrategia fundamental para escalar tu negocio de agencia es construir y mantener una marca sólida. Una marca fuerte te ayudará a diferenciarte de la competencia y atraer a clientes potenciales. Define una propuesta de valor única, crea un logotipo y una identidad visual efectiva, y comunica de manera consistente los valores y beneficios de tu agencia en todos tus canales de marketing y comunicaci
+        • Construir y Mantener una Marca Sólida:
+        Una estrategia fundamental para escalar tu negocio de agencia es construir y mantener una marca sólida. Una marca fuerte te ayudará a diferenciarte de la competencia y atraer a clientes potenciales. Define una propuesta de valor única, crea un logotipo y una identidad visual efectiva, y comunica de manera consistente los valores y beneficios de tu agencia en todos tus canales de marketing y comunicaci
 
-• Desarrollar Relaciones y Alianzas Estratégicas:
-  Para escalar tu negocio de agencia, es esencial establecer relaciones y alianzas estratégicas con otras empresas y profesionales. Estas asociaciones pueden abrir nuevas oportunidades de negocio, permitir el acceso a nuevos clientes y proporcionar recursos adicionales. Identifica empresas y profesionales con los que puedas colaborar y desarrolla relaciones mutuamente beneficiosas a largo plazo.
+        • Desarrollar Relaciones y Alianzas Estratégicas:
+          Para escalar tu negocio de agencia, es esencial establecer relaciones y alianzas estratégicas con otras empresas y profesionales. Estas asociaciones pueden abrir nuevas oportunidades de negocio, permitir el acceso a nuevos clientes y proporcionar recursos adicionales. Identifica empresas y profesionales con los que puedas colaborar y desarrolla relaciones mutuamente beneficiosas a largo plazo.
 
-• Automatización y Eficiencia Operativa:
-  La automatización y la búsqueda de eficiencia operativa son estrategias clave para escalar un negocio de agencia. Utiliza herramientas y tecnologías que te permitan automatizar procesos repetitivos y optimizar la gestión de tareas. Automatizar tareas como el seguimiento de clientes, la facturación y el análisis de datos te permitirá ahorrar tiempo y recursos, y te ayudará a escalar de manera más efectiva.
+        • Automatización y Eficiencia Operativa:
+          La automatización y la búsqueda de eficiencia operativa son estrategias clave para escalar un negocio de agencia. Utiliza herramientas y tecnologías que te permitan automatizar procesos repetitivos y optimizar la gestión de tareas. Automatizar tareas como el seguimiento de clientes, la facturación y el análisis de datos te permitirá ahorrar tiempo y recursos, y te ayudará a escalar de manera más efectiva.
 
-• Inversión en Marketing y Publicidad:
-  Para escalar tu negocio de agencia, debes invertir en marketing y publicidad. Crea una estrategia de marketing sólida que incluya tácticas de promoción en línea y fuera de línea. Utiliza herramientas de marketing digital como el marketing por correo electrónico, las redes sociales y el SEO para generar leads y atraer a nuevos clientes. Apóyate también en la publicidad tradicional, como anuncios en medios impresos o televisión, cuando sea adecuado para tu nicho y público objetivo.
+        • Inversión en Marketing y Publicidad:
+          Para escalar tu negocio de agencia, debes invertir en marketing y publicidad. Crea una estrategia de marketing sólida que incluya tácticas de promoción en línea y fuera de línea. Utiliza herramientas de marketing digital como el marketing por correo electrónico, las redes sociales y el SEO para generar leads y atraer a nuevos clientes. Apóyate también en la publicidad tradicional, como anuncios en medios impresos o televisión, cuando sea adecuado para tu nicho y público objetivo.
 
-• Desarrollar un Equipo Competente:
-  Escalar un negocio de agencia requiere contar con un equipo competente y comprometido. A medida que tu agencia crece, es importante contratar a profesionales con habilidades complementarias y experiencia en el nicho específico de tu agencia. Brinda oportunidades de capacitación y desarrollo profesional para fomentar el crecimiento del equipo. Un equipo fuerte te permitirá asumir más proyectos y atender las necesidades crecientes de tus clientes.
-      `
+        • Desarrollar un Equipo Competente:
+          Escalar un negocio de agencia requiere contar con un equipo competente y comprometido. A medida que tu agencia crece, es importante contratar a profesionales con habilidades complementarias y experiencia en el nicho específico de tu agencia. Brinda oportunidades de capacitación y desarrollo profesional para fomentar el crecimiento del equipo. Un equipo fuerte te permitirá asumir más proyectos y atender las necesidades crecientes de tus clientes.
+      `,
+        conclusion:
+          'En este módulo, has aprendido estrategias clave para escalar tu negocio de agencia. Desde la especialización en un nicho hasta el desarrollo de un equipo competente, estas estrategias te ayudarán a crecer de manera sostenible y exitosa.'
       },
       {
         id: 4,
@@ -117,10 +140,47 @@ Una estrategia fundamental para escalar tu negocio de agencia es construir y man
 
         10. Elaboración de Estrategias para Escalar tu Agencia:
         Crea un plan de crecimiento para escalar tu agencia. Incluye estrategias para ampliar tu base de clientes, mejorar la eficiencia operativa y aumentar la rentabilidad.
-      `
+      `,
+        conclusion:
+          'Estos ejercicios prácticos te han permitido aplicar los conceptos aprendidos en situaciones del mundo real. Continúa practicando estas habilidades para mejorar tu capacidad de gestionar y hacer crecer una agencia exitosa.'
       }
     ]
   };
+
+  useEffect(() => {
+    const fetchCursoData = async () => {
+      setIsLoading(true);
+      try {
+        // Simulamos la llamada al backend con un delay
+        const response = await new Promise<CursoData>((resolve) => {
+          setTimeout(() => {
+            resolve(cursoData2);
+          }, 1000);
+        });
+
+        setCursoData(response);
+      } catch (err) {
+        setError('Error al cargar los datos del curso');
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCursoData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Cargando...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!cursoData) {
+    return <div>No se encontraron datos del curso</div>;
+  }
 
   return <CursoDetalle cursoData={cursoData} />;
 };
